@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste de câmera</title>
+</head>
+<body>
+  <h1>Teste de câmera</h1>
+  <button onclick="abrirCamera()">Permitir câmera</button>
+  <video id="video" width="300" autoplay></video>
+
+  <script>
+    async function abrirCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+
+        document.getElementById("video").srcObject = stream;
+      } catch (erro) {
+        alert("Permissão negada ou câmera indisponível.");
+      }
+    }
+  </script>
+</body>
+</html>
